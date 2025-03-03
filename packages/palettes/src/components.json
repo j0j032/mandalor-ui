@@ -1,0 +1,28 @@
+{
+  "pannel-background": "solid",
+  "radius": "xl",
+  "neutral-palette": "gray",
+  "accent-palette": "blue",
+  "error-palette": "red",
+  "success-palette": "green",
+  "warning-palette": "yellow",
+  "info-palette": "blue",
+  "accent-has-dark-text-on-solid-background": false,
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "~/components",
+    "utils": "~/lib/utils",
+    "ui": "~/components/ui",
+    "lib": "~/lib",
+    "hooks": "~/hooks"
+  },
+  "iconLibrary": "lucide"
+}

@@ -416,6 +416,12 @@
   --color-high-contrast-text-warning-alpha: var(--high-contrast-text-warning-alpha);
   --color-high-contrast-text-info: var(--high-contrast-text-info);
   --color-high-contrast-text-info-alpha: var(--high-contrast-text-info-alpha);
+
+  /* Semantic Colors */
+  --color-absolute-dark: var(--color-absolute-dark);
+  --color-absolute-dark-accent: var(--color-absolute-dark-accent);
+  --color-absolute-light: var(--color-absolute-light);
+  --color-absolute-light-accent: var(--color-absolute-light-accent);
 }
 
 @layer base {
