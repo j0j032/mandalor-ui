@@ -1,7 +1,7 @@
 {
   "pannel-background": "solid",
   "radius": "xl",
-  "neutral-palette": "gray",
+  "neutral-palette": "grayScales",
   "accent-palette": "blue",
   "error-palette": "red",
   "success-palette": "green",

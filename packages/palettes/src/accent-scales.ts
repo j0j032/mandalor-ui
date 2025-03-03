@@ -1,219 +1,83 @@
-import { gold, goldDark, goldA, goldDarkA } from '@radix-ui/colors'
+import { amber, amberDark, amberA, amberDarkA } from '@radix-ui/colors'
+import { blue, blueDark, blueA, blueDarkA } from '@radix-ui/colors'
 import { bronze, bronzeDark, bronzeA, bronzeDarkA } from '@radix-ui/colors'
 import { brown, brownDark, brownA, brownDarkA } from '@radix-ui/colors'
-import { yellow, yellowDark, yellowA, yellowDarkA } from '@radix-ui/colors'
-import { amber, amberDark, amberA, amberDarkA } from '@radix-ui/colors'
-import { orange, orangeDark, orangeA, orangeDarkA } from '@radix-ui/colors'
-import { red, redDark, redA, redDarkA } from '@radix-ui/colors'
-import { tomato, tomatoDark, tomatoA, tomatoDarkA } from '@radix-ui/colors'
-import { ruby, rubyDark, rubyA, rubyDarkA } from '@radix-ui/colors'
 import { crimson, crimsonDark, crimsonA, crimsonDarkA } from '@radix-ui/colors'
-import { pink, pinkDark, pinkA, pinkDarkA } from '@radix-ui/colors'
-import { plum, plumDark, plumA, plumDarkA } from '@radix-ui/colors'
-import { violet, violetDark, violetA, violetDarkA } from '@radix-ui/colors'
-import { iris, irisDark, irisA, irisDarkA } from '@radix-ui/colors'
-import { indigo, indigoDark, indigoA, indigoDarkA } from '@radix-ui/colors'
-import { blue, blueDark, blueA, blueDarkA } from '@radix-ui/colors'
 import { cyan, cyanDark, cyanA, cyanDarkA } from '@radix-ui/colors'
-import { teal, tealDark, tealA, tealDarkA } from '@radix-ui/colors'
-import { jade, jadeDark, jadeA, jadeDarkA } from '@radix-ui/colors'
+import { gold, goldDark, goldA, goldDarkA } from '@radix-ui/colors'
 import { green, greenDark, greenA, greenDarkA } from '@radix-ui/colors'
-import { grass, grassDark, grassA, grassDarkA } from '@radix-ui/colors'
+import { indigo, indigoDark, indigoA, indigoDarkA } from '@radix-ui/colors'
+import { iris, irisDark, irisA, irisDarkA } from '@radix-ui/colors'
+import { jade, jadeDark, jadeA, jadeDarkA } from '@radix-ui/colors'
 import { lime, limeDark, limeA, limeDarkA } from '@radix-ui/colors'
 import { mint, mintDark, mintA, mintDarkA } from '@radix-ui/colors'
+import { orange, orangeDark, orangeA, orangeDarkA } from '@radix-ui/colors'
+import { pink, pinkDark, pinkA, pinkDarkA } from '@radix-ui/colors'
+import { plum, plumDark, plumA, plumDarkA } from '@radix-ui/colors'
+import { purple, purpleDark, purpleA, purpleDarkA } from '@radix-ui/colors'
+import { red, redDark, redA, redDarkA } from '@radix-ui/colors'
+import { ruby, rubyDark, rubyA, rubyDarkA } from '@radix-ui/colors'
 import { sky, skyDark, skyA, skyDarkA } from '@radix-ui/colors'
+import { teal, tealDark, tealA, tealDarkA } from '@radix-ui/colors'
+import { tomato, tomatoDark, tomatoA, tomatoDarkA } from '@radix-ui/colors'
+import { violet, violetDark, violetA, violetDarkA } from '@radix-ui/colors'
+import { yellow, yellowDark, yellowA, yellowDarkA } from '@radix-ui/colors'
+import { generatePaletteScales } from './helpers'
 
-const goldScales = {
-  gold,
-  goldA,
-  goldDark,
-  goldDarkA
-}
+export const accentPalettes = [
+  'amber',
+  'blue',
+  'bronze',
+  'brown',
+  'crimson',
+  'cyan',
+  'gold',
+  'green',
+  'indigo',
+  'iris',
+  'jade',
+  'lime',
+  'mint',
+  'orange',
+  'pink',
+  'plum',
+  'purple',
+  'red',
+  'ruby',
+  'sky',
+  'teal',
+  'tomato',
+  'violet',
+  'yellow'
+] as const
 
-const bronzeScales = {
-  bronze,
-  bronzeA,
-  bronzeDark,
-  bronzeDarkA
-}
+export type AccentPalette = (typeof accentPalettes)[number]
 
-const brownScales = {
-  brown,
-  brownA,
-  brownDark,
-  brownDarkA
-}
+const paletteMapping = {
+  amber: { base: amber, a: amberA, dark: amberDark, darkA: amberDarkA },
+  blue: { base: blue, a: blueA, dark: blueDark, darkA: blueDarkA },
+  bronze: { base: bronze, a: bronzeA, dark: bronzeDark, darkA: bronzeDarkA },
+  brown: { base: brown, a: brownA, dark: brownDark, darkA: brownDarkA },
+  crimson: { base: crimson, a: crimsonA, dark: crimsonDark, darkA: crimsonDarkA },
+  cyan: { base: cyan, a: cyanA, dark: cyanDark, darkA: cyanDarkA },
+  gold: { base: gold, a: goldA, dark: goldDark, darkA: goldDarkA },
+  green: { base: green, a: greenA, dark: greenDark, darkA: greenDarkA },
+  indigo: { base: indigo, a: indigoA, dark: indigoDark, darkA: indigoDarkA },
+  iris: { base: iris, a: irisA, dark: irisDark, darkA: irisDarkA },
+  jade: { base: jade, a: jadeA, dark: jadeDark, darkA: jadeDarkA },
+  lime: { base: lime, a: limeA, dark: limeDark, darkA: limeDarkA },
+  mint: { base: mint, a: mintA, dark: mintDark, darkA: mintDarkA },
+  orange: { base: orange, a: orangeA, dark: orangeDark, darkA: orangeDarkA },
+  pink: { base: pink, a: pinkA, dark: pinkDark, darkA: pinkDarkA },
+  plum: { base: plum, a: plumA, dark: plumDark, darkA: plumDarkA },
+  purple: { base: purple, a: purpleA, dark: purpleDark, darkA: purpleDarkA },
+  red: { base: red, a: redA, dark: redDark, darkA: redDarkA },
+  ruby: { base: ruby, a: rubyA, dark: rubyDark, darkA: rubyDarkA },
+  sky: { base: sky, a: skyA, dark: skyDark, darkA: skyDarkA },
+  teal: { base: teal, a: tealA, dark: tealDark, darkA: tealDarkA },
+  tomato: { base: tomato, a: tomatoA, dark: tomatoDark, darkA: tomatoDarkA },
+  violet: { base: violet, a: violetA, dark: violetDark, darkA: violetDarkA },
+  yellow: { base: yellow, a: yellowA, dark: yellowDark, darkA: yellowDarkA }
+} as const
 
-const yellowScales = {
-  yellow,
-  yellowA,
-  yellowDark,
-  yellowDarkA
-}
-
-const amberScales = {
-  amber,
-  amberA,
-  amberDark,
-  amberDarkA
-}
-
-const orangeScales = {
-  orange,
-  orangeA,
-  orangeDark,
-  orangeDarkA
-}
-
-const tomatoScales = {
-  tomato,
-  tomatoA,
-  tomatoDark,
-  tomatoDarkA
-}
-
-const redScales = {
-  red,
-  redA,
-  redDark,
-  redDarkA
-}
-
-const rubyScales = {
-  ruby,
-  rubyA,
-  rubyDark,
-  rubyDarkA
-}
-
-const crimsonScales = {
-  crimson,
-  crimsonA,
-  crimsonDark,
-  crimsonDarkA
-}
-
-const pinkScales = {
-  pink,
-  pinkA,
-  pinkDark,
-  pinkDarkA
-}
-
-const plumScales = {
-  plum,
-  plumA,
-  plumDark,
-  plumDarkA
-}
-
-const violetScales = {
-  violet,
-  violetA,
-  violetDark,
-  violetDarkA
-}
-
-const irisScales = {
-  iris,
-  irisA,
-  irisDark,
-  irisDarkA
-}
-
-const indigoScales = {
-  indigo,
-  indigoA,
-  indigoDark,
-  indigoDarkA
-}
-
-const blueScales = {
-  blue,
-  blueA,
-  blueDark,
-  blueDarkA
-}
-
-const cyanScales = {
-  cyan,
-  cyanA,
-  cyanDark,
-  cyanDarkA
-}
-
-const tealScales = {
-  teal,
-  tealA,
-  tealDark,
-  tealDarkA
-}
-
-const jadeScales = {
-  jade,
-  jadeA,
-  jadeDark,
-  jadeDarkA
-}
-
-const greenScales = {
-  green,
-  greenA,
-  greenDark,
-  greenDarkA
-}
-
-const grassScales = {
-  grass,
-  grassA,
-  grassDark,
-  grassDarkA
-}
-
-const limeScales = {
-  lime,
-  limeA,
-  limeDark,
-  limeDarkA
-}
-
-const mintScales = {
-  mint,
-  mintA,
-  mintDark,
-  mintDarkA
-}
-
-const skyScales = {
-  sky,
-  skyA,
-  skyDark,
-  skyDarkA
-}
-
-export const accentScales = {
-  goldScales,
-  bronzeScales,
-  brownScales,
-  yellowScales,
-  amberScales,
-  orangeScales,
-  tomatoScales,
-  redScales,
-  rubyScales,
-  crimsonScales,
-  pinkScales,
-  plumScales,
-  violetScales,
-  irisScales,
-  indigoScales,
-  blueScales,
-  cyanScales,
-  tealScales,
-  jadeScales,
-  greenScales,
-  grassScales,
-  limeScales,
-  mintScales,
-  skyScales
-}
+export const accentScales = generatePaletteScales(accentPalettes, paletteMapping)
