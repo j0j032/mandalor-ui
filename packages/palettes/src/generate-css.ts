@@ -1,5 +1,19 @@
-import { neutralScales } from './gray-scales'
+import { NeutralPalette, neutralScales } from './gray-scales'
 import config from './components.json'
+import { AccentPalette } from './accent-scales'
+import { ErrorPalette } from './error-scales'
+import { SuccessPalette } from './success-scales'
+import { WarningPalette } from './warning-scales'
+import { InfoPalette } from './info-scales'
+
+type ComponentsConfig = {
+  'neutral-palette': NeutralPalette
+  'accent-palette': AccentPalette
+  'error-palette': ErrorPalette
+  'success-palette': SuccessPalette
+  'warning-palette': WarningPalette
+  'info-palette': InfoPalette
+}
 
 const {
   'neutral-palette': neutralPalette,
@@ -8,27 +22,20 @@ const {
   'success-palette': successPalette,
   'warning-palette': warningPalette,
   'info-palette': infoPalette
-} = config
+} = config as ComponentsConfig
 
-console.log(neutralScales[neutralPalette].gray1)
+console.log(neutralScales[neutralPalette])
 
-const palette1VariablesNames = [
-  'app-background',
-  'app-background-alpha',
-  'app-background-accent',
-  'app-background-accent-alpha',
-  'app-background-error',
-  'app-background-error-alpha',
-  'app-background-success',
-  'app-background-success-alpha',
-  'app-background-warning',
-  'app-background-warning-alpha',
-  'app-background-info',
-  'app-background-info-alpha'
-]
-
-const palette1Variables = palette1VariablesNames.map(variable => {
-  return {
-    // [variable]: neutralScales['neutral-palette'][variable],
-  }
-})
+const cssVariablesSuffixes = [
+  '',
+  'accent',
+  'accent-alpha',
+  'error',
+  'error-alpha',
+  'success',
+  'success-alpha',
+  'warning',
+  'warning-alpha',
+  'info',
+  'info-alpha'
+] as const

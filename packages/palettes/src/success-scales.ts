@@ -7,6 +7,7 @@ import { mint, mintDark, mintA, mintDarkA } from '@radix-ui/colors'
 import { generatePaletteScales } from './helpers'
 
 const successPalettes = ['green', 'teal', 'jade', 'grass', 'mint'] as const
+export type SuccessPalette = (typeof successPalettes)[number]
 
 export const successScalesMapping = {
   green: { base: green, a: greenA, dark: greenDark, darkA: greenDarkA },

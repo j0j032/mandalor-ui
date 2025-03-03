@@ -4,7 +4,7 @@ import { yellow, yellowDark, yellowA, yellowDarkA } from '@radix-ui/colors'
 import { generatePaletteScales } from './helpers'
 
 const warningPalettes = ['yellow', 'amber', 'orange'] as const
-
+export type WarningPalette = (typeof warningPalettes)[number]
 export const warningScalesMapping = {
   yellow: { base: yellow, a: yellowA, dark: yellowDark, darkA: yellowDarkA },
   amber: { base: amber, a: amberA, dark: amberDark, darkA: amberDarkA },

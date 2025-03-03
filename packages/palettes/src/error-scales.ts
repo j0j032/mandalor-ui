@@ -5,6 +5,7 @@ import { crimson, crimsonA, crimsonDark, crimsonDarkA } from '@radix-ui/colors'
 import { generatePaletteScales } from './helpers'
 
 const errorPalettes = ['red', 'ruby', 'tomato', 'crimson'] as const
+export type ErrorPalette = (typeof errorPalettes)[number]
 
 export const errorScalesMapping = {
   red: { base: red, a: redA, dark: redDark, darkA: redDarkA },

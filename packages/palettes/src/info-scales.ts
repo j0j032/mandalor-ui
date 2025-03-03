@@ -5,6 +5,7 @@ import { cyan, cyanDark, cyanA, cyanDarkA } from '@radix-ui/colors'
 import { generatePaletteScales } from './helpers'
 
 const infoPalettes = ['blue', 'indigo', 'sky', 'cyan'] as const
+export type InfoPalette = (typeof infoPalettes)[number]
 
 export const infoScalesMapping = {
   blue: { base: blue, a: blueA, dark: blueDark, darkA: blueDarkA },
